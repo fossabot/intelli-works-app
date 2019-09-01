@@ -1,0 +1,28 @@
+<ion-header (dblclick)="scrollToTop()">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>辅导记录列表</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list *ngIf="recordService.fetchResult !== undefined && recordService.fetchResult.length > 0">
+    <section *ngFor="let note of recordService.fetchResult">
+      <ion-item (click)="showNote(note)">
+        <ion-label>
+          <h2>辅导时间： {{shareService.timestampToTime(note.timestamp)}} </h2>
+          <h2>辅导老师： {{note.teacherName}}</h2>
+          <h2>辅导问题： {{note.category}}（{{note.level}}）</h2>
+          <h2>后续处理： {{note.comment}}</h2>
+        </ion-label>
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-item>
+    </section>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>消息详情</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>留言学生：</ion-label>
+      <ion-label style="text-align: right">{{currentMessage.name}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>学号：</ion-label>
+      <ion-label style="text-align: right">{{currentMessage.id}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>重要程度：</ion-label>
+      <ion-label style="text-align: right">{{currentMessage.level}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>消息状态：</ion-label>
+      <ion-label style="text-align: right" *ngIf="currentMessage.status">未读</ion-label>
+      <ion-label style="text-align: right" *ngIf="!currentMessage.status">已读</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>留言时间：<br>
+        <h2 style="text-align: right">{{shareService.timestampToTime(currentMessage.timestamp)}}</h2>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>留言内容：</ion-label>
+      <ion-textarea readonly auto-grow="true" value="{{currentMessage.message}}"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <br>
+  <section>
+    <ion-button *ngIf="currentMessage.status" color="primary" expand="block" (click)="setRead()">已阅</ion-button>
+    <br>
+    <ion-button color="primary" expand="block" (click)="showStudent(currentMessage.id)" >查看留言学生详情</ion-button>
+    <br>
+  </section>
+</ion-content>

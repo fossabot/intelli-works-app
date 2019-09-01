@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>请输入邀请码</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form style="margin-top: 55%" (ngSubmit)="working = true; doLogin();">
+    <ion-item>
+      <ion-label>邀请码：</ion-label>
+      <ion-input type="text" clearInput [formControl]="codeInput"></ion-input>
+    </ion-item>
+    <br><br>
+    <ion-button expand="block" [disabled]="working" style="margin-left: 20px; margin-right: 20px" type="submit">进入</ion-button>
+  </form>
+</ion-content>

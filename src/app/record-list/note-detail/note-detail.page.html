@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>辅导详情</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>辅导学生：</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentNote.studentName}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>学号：</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentNote.sno}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>辅导老师：</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentNote.teacherName}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>辅导时间：<br>
+        <h2 style="text-align: right">{{shareService.timestampToTime(shareService.currentNote.timestamp)}}</h2>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>问题分类：</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentNote.category}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>问题程度：</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentNote.level}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>辅导内容：</ion-label>
+      <ion-textarea auto-grow="true" readonly value="{{shareService.currentNote.note}}"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>后续处理：</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentNote.comment}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <br>
+  <ion-button *ngIf="shareService.fromHistory" expand="block" style="margin-left: 20px; margin-right: 20px" (click)="createNote()">记录深度辅导</ion-button>
+  <br>
+  <ion-button *ngIf="shareService.fromHistory" #btn expand="block" style="margin-left: 20px; margin-right: 20px" (click)="showHistory(btn)">查看辅导记录</ion-button>
+  <br>
+  <ion-button *ngIf="shareService.fromHistory" expand="block" style="margin-left: 20px; margin-right: 20px" (click)="showStudent()">查看学生详情</ion-button>
+  <br>
+
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-header (dblclick)="scrollToTop()">
+  <ion-toolbar>
+    <ion-title>辅导历史</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list *ngIf="historyList !== undefined && historyList.length > 0">
+    <section *ngFor="let note of historyList">
+      <ion-item (click)="showNote(note)">
+        <ion-label>
+          <h2>辅导学生： {{note.studentName}}&nbsp;&nbsp;&nbsp;{{note.sno}}</h2>
+          <h2>辅导时间： {{shareService.timestampToTime(note.timestamp)}} </h2>
+          <h2>辅导问题： {{note.category}}（{{note.level}}）</h2>
+          <h2>后续处理： {{note.comment}}</h2>
+        </ion-label>
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-item>
+    </section>
+  </ion-list>
+</ion-content>

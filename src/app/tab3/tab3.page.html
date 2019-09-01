@@ -1,0 +1,31 @@
+<ion-header (dblclick)="scrollToTop()">
+  <ion-toolbar>
+    <ion-title>
+      留言消息
+    </ion-title>
+    <ion-label *ngIf="shareService.unread > 0" style="margin-right: 1.2rem;" slot="end">
+      {{shareService.unread}}条未读
+    </ion-label>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list *ngIf="messageList !== undefined && messageList.length > 0">
+    <section *ngFor="let message of messageList">
+      <ion-item (click)="showMessage(message)">
+        <ion-label>
+          <h2>{{message.name}}&nbsp;&nbsp;&nbsp;{{message.id}}</h2>
+          <h2>在 {{shareService.timestampToTime(message.timestamp)}} 留言说：</h2>
+          <h2>{{showBrief(message.message)}}</h2>
+          <h3>留言分类：{{message.level}}</h3>
+        </ion-label>
+        <ion-icon slot="end" name="mail" *ngIf="message.status"></ion-icon>
+        <ion-icon slot="end" name="mail-open" *ngIf="!message.status"></ion-icon>
+      </ion-item>
+    </section>
+  </ion-list>
+</ion-content>

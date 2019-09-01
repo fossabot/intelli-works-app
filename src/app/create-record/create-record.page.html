@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>创建深度辅导记录</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <form [formGroup]="recordForm" (ngSubmit)="submitBtn.disabled = true; onSubmit(submitBtn);">
+    <ion-list >
+      <ion-item>
+        <ion-label>辅导学生</ion-label>
+        <ion-label>{{shareService.currentStudent.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{shareService.currentStudent.sno}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>问题分类</ion-label>
+        <ion-select #cat (ionChange)="ifNeedLevel(cat)" formControlName="category" value="常规辅导" okText="确定" cancelText="取消">
+          <ion-select-option value="常规辅导">常规辅导</ion-select-option>
+          <ion-select-option value="学生干部">学生干部</ion-select-option>
+          <ion-select-option value="学业问题">学业问题</ion-select-option>
+          <ion-select-option value="心理问题">心理问题</ion-select-option>
+          <ion-select-option value="其他问题">其他问题</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item *ngIf="needLevel">
+        <ion-label>严重程度</ion-label>
+        <ion-select formControlName="level" value="一般" okText="确定" cancelText="取消">
+          <ion-select-option value="严重">严重</ion-select-option>
+          <ion-select-option value="一般">一般</ion-select-option>
+          <ion-select-option value="轻微">轻微</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">辅导记录</ion-label>
+        <ion-textarea formControlName="note" rows="10" maxlength="300"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label>后续建议</ion-label>
+        <ion-select formControlName="comment" value="常规处理" okText="确定" cancelText="取消">
+          <ion-select-option value="常规处理">常规处理</ion-select-option>
+          <ion-select-option value="继续观察">继续观察</ion-select-option>
+          <ion-select-option value="紧急上报">紧急上报</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-button #submitBtn expand="block" style="margin-left: 20px; margin-right: 20px" type="submit">提交</ion-button>
+  </form>
+</ion-content>

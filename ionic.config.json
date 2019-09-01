@@ -1,0 +1,7 @@
+{
+  "name": "velvet-scarlatina",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{shareService.currentStudent.name}}</ion-title>
+    <ion-button fill="clear" slot="end" (click)="copyAll()">
+      复制所有
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item (click)="copy(shareService.currentStudent.grade)">
+      <ion-label >年级</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentStudent.grade}}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="copy(shareService.currentStudent.cls)">
+      <ion-label >班级</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentStudent.cls}}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="copy(shareService.currentStudent.sno)">
+      <ion-label >学号</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentStudent.sno}}</ion-label>
+    </ion-item>
+    
+    <ion-item (click)="copy(shareService.currentStudent.name)">
+      <ion-label >姓名</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentStudent.name}}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="copy(shareService.currentStudent.area)">
+      <ion-label >生源地</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentStudent.area}}</ion-label>
+    </ion-item>
+    
+    <ion-item (click)="copy(shareService.currentStudent.nation)">
+      <ion-label >民族</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentStudent.nation}}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="copy(shareService.currentStudent.quality)">
+      <ion-label >性质</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentStudent.quality}}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="copy(shareService.currentStudent.nation_help)">
+      <ion-label >国助生</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentStudent.nation_help}}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="copy(shareService.currentStudent.gpa)">
+      <ion-label >绩点</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentStudent.gpa}}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="copy(shareService.currentStudent.political)">
+      <ion-label >政治面貌</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentStudent.political}}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="copy(shareService.currentStudent.phone)">
+      <ion-label >手机号</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentStudent.phone}}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="copy(shareService.currentStudent.parent_phone)">
+      <ion-label >父母手机号</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentStudent.parent_phone}}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="copy(shareService.currentStudent.dorm)">
+      <ion-label >宿舍楼</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentStudent.dorm}}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="copy(shareService.currentStudent.dorm_num)">
+      <ion-label >宿舍</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentStudent.dorm_num}}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="copy(shareService.currentStudent.uid)">
+      <ion-label >身份证号</ion-label>
+      <ion-label style="text-align: right">{{shareService.currentStudent.uid}}</ion-label>
+    </ion-item>
+
+    <ion-item (click)="copy(shareService.currentStudent.home)">
+      <ion-label >家庭住址<br>
+        <h3 style="text-align: right">{{shareService.currentStudent.home}}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <br>
+  <ion-button color="primary" expand="block" (click)="createRecord()" >记录深度辅导</ion-button>
+  <br>
+  <ion-button #btn color="primary" expand="block" (click)="btn.disabled = true; showRecord(btn)" >查看辅导记录</ion-button>
+  <br>
+</ion-content>
